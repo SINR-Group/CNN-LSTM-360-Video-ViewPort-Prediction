@@ -37,7 +37,7 @@ prob = glob.glob(path+'sensory/tileProb/*.npy')
 
 def myGenerator():
     while True:
-        index_list = random.sample(range(1, 30000), 5)
+        index_list = random.sample(range(1, 30000), 3)
         alldata_x = []
         alldata_y = []
         for i in index_list:
@@ -90,6 +90,13 @@ def mySegNet(input_shape):
     
 input_shape=(30, height, width, 3)
 model = mySegNet(input_shape)
-model.fit_generator(generator=myGenerator(),
-                    use_multiprocessing=True,
-                   steps_per_epoch=5, epochs=5)
+model.load_weights('model_weights2.h5')
+
+xtest = 
+model.predict(xtest, batch_size=3)
+
+#model.fit_generator(generator=myGenerator(),
+#                    use_multiprocessing=True,
+#                   steps_per_epoch=300, epochs=100)
+#model.save('model3.h5')
+#model.save_weights('model_weights3.h5')
